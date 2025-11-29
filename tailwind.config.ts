@@ -13,6 +13,10 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        serif: ['Cormorant Garamond', 'serif'],
+        sans: ['Inter', 'sans-serif'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -38,6 +42,10 @@ export default {
         accent: {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
+        },
+        burgundy: {
+          DEFAULT: "hsl(var(--burgundy))",
+          foreground: "hsl(var(--burgundy-foreground))",
         },
         popover: {
           DEFAULT: "hsl(var(--popover))",
