@@ -11,7 +11,7 @@ const About = () => {
           </div>
           <div className="space-y-6">
             <p className="font-sans text-lg text-foreground/80 leading-relaxed font-light">
-              With a unique background bridging business strategy and fashion creativity, I bring a comprehensive approach to styling that understands both aesthetic vision and commercial viability.
+              I am citlalli With a unique background bridging business strategy and fashion creativity, I bring a comprehensive approach to styling that understands both aesthetic vision and commercial viability.
             </p>
             <p className="font-sans text-lg text-foreground/80 leading-relaxed font-light">
               My work spans editorial styling, corporate fashion consulting, and creative direction for brands seeking to merge style with strategic business thinking.
