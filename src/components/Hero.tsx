@@ -1,68 +1,59 @@
-import { useState, useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { ChevronDown } from "lucide-react";
 
 const Hero = () => {
-  const [scrollY, setScrollY] = useState(0);
+  const heroRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
+    const handleScroll = () => {
+      if (heroRef.current) {
+        const scrolled = window.scrollY;
+        const hero = heroRef.current;
+        const opacity = Math.max(0, 1 - scrolled / 600);
+        hero.style.opacity = opacity.toString();
+      }
+    };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <section id="hero" className="h-screen flex items-center justify-center relative overflow-hidden bg-background">
-      {/* Animated gradient orbs */}
-      <div 
-        className="absolute top-20 right-20 w-96 h-96 rounded-full opacity-20 blur-3xl"
-        style={{
-          background: 'radial-gradient(circle, hsl(var(--burgundy)) 0%, transparent 70%)',
-          transform: `translate(${scrollY * 0.3}px, ${scrollY * 0.2}px) scale(${1 + scrollY * 0.001})`
-        }}
-      />
-      <div 
-        className="absolute bottom-20 left-20 w-96 h-96 rounded-full opacity-15 blur-3xl"
-        style={{
-          background: 'radial-gradient(circle, hsl(var(--coral)) 0%, transparent 70%)',
-          transform: `translate(${-scrollY * 0.2}px, ${scrollY * 0.3}px) scale(${1 + scrollY * 0.001})`
-        }}
-      />
-      
-      <div className="text-center z-10 px-4 max-w-6xl">
-        <div 
-          className="mb-8"
-          style={{ 
-            opacity: Math.max(0, 1 - scrollY * 0.003),
-            transform: `translateY(${scrollY * 0.5}px)`
-          }}
-        >
-          <h1 className="text-8xl md:text-[12rem] lg:text-[14rem] font-light leading-none tracking-tighter mb-4">
+    <section 
+      id="hero" 
+      className="h-screen flex items-center justify-center relative overflow-hidden bg-background"
+      ref={heroRef}
+    >
+      <div className="text-center z-10 px-8 max-w-7xl mx-auto">
+        <div className="mb-16 space-y-4">
+          <h1 className="font-serif text-7xl md:text-9xl lg:text-[12rem] font-light leading-none tracking-tight text-foreground opacity-0 animate-fade-in">
             Citlalli
           </h1>
-          <h1 className="text-8xl md:text-[12rem] lg:text-[14rem] font-light leading-none tracking-tighter">
+          <h1 className="font-serif text-7xl md:text-9xl lg:text-[12rem] font-light leading-none tracking-tight text-foreground opacity-0 animate-fade-in" style={{ animationDelay: '0.2s' }}>
             Villanueva
           </h1>
         </div>
         
         <p 
-          className="text-xl md:text-3xl text-muted-foreground font-light tracking-[0.3em] uppercase mb-20"
-          style={{ 
-            opacity: Math.max(0, 1 - scrollY * 0.003),
-            transform: `translateY(${scrollY * 0.5}px)`
-          }}
+          className="font-sans text-xs md:text-sm text-muted-foreground font-normal tracking-[0.4em] uppercase mb-8 opacity-0 animate-fade-in"
+          style={{ animationDelay: '0.4s' }}
         >
-          Fashion Stylist / Brand Strategist
+          Fashion Business & Creative Technologies
+        </p>
+        
+        <p 
+          className="font-sans text-base md:text-lg text-foreground/60 font-light max-w-2xl mx-auto leading-relaxed mb-20 opacity-0 animate-fade-in"
+          style={{ animationDelay: '0.6s' }}
+        >
+          Bridging creative vision with strategic foresight. Specializing in Trend Forecasting, Styling, and Brand Strategy. Based in NYC.
         </p>
         
         <div 
-          className="flex items-center justify-center gap-3 text-muted-foreground"
-          style={{ 
-            opacity: Math.max(0, 1 - scrollY * 0.01)
-          }}
+          className="flex items-center justify-center gap-3 text-muted-foreground opacity-0 animate-fade-in"
+          style={{ animationDelay: '0.8s' }}
         >
-          <ChevronDown size={24} className="animate-float" />
-          <span className="text-sm tracking-widest uppercase">Scroll to explore</span>
-          <ChevronDown size={24} className="animate-float" style={{ animationDelay: '0.5s' }} />
+          <ChevronDown size={20} className="animate-float" />
+          <span className="text-xs tracking-[0.3em] uppercase">Explore</span>
         </div>
       </div>
     </section>
