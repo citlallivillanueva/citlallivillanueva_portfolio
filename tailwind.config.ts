@@ -43,13 +43,13 @@ export default {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
         },
-        burgundy: {
-          DEFAULT: "hsl(var(--burgundy))",
-          foreground: "hsl(var(--burgundy-foreground))",
+        taupe: {
+          DEFAULT: "hsl(var(--taupe))",
+          foreground: "hsl(var(--taupe-foreground))",
         },
-        coral: {
-          DEFAULT: "hsl(var(--coral))",
-          foreground: "hsl(var(--coral-foreground))",
+        gold: {
+          DEFAULT: "hsl(var(--gold))",
+          foreground: "hsl(var(--gold-foreground))",
         },
         popover: {
           DEFAULT: "hsl(var(--popover))",

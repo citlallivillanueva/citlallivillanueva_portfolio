@@ -1,5 +1,3 @@
-import MarqueeText from "./MarqueeText";
-
 const skills = [
   "Brand Storytelling",
   "Trend Analysis",
@@ -17,20 +15,19 @@ const skills = [
 
 const About = () => {
   return (
-    <section id="about" className="min-h-screen py-32 bg-background">
-      {/* Marquee Header */}
-      <div className="mb-32">
-        <MarqueeText 
-          text="ABOUT ★ BIOGRAPHY ★ BACKGROUND ★" 
-          className="text-5xl md:text-7xl font-light text-burgundy py-8 border-y border-border"
-        />
-      </div>
+    <section id="about" className="min-h-screen py-32 md:py-40 bg-background">
+      <div className="px-8 md:px-16 lg:px-32 max-w-7xl mx-auto">
+        <div className="mb-24">
+          <h2 className="font-serif text-6xl md:text-8xl font-light tracking-tight text-foreground mb-4">
+            About
+          </h2>
+          <div className="w-20 h-px bg-border mt-8" />
+        </div>
 
-      <div className="px-6 md:px-12 lg:px-24">
-        <div className="grid lg:grid-cols-2 gap-20 mb-32">
+        <div className="grid lg:grid-cols-12 gap-16 lg:gap-24 mb-32">
           {/* Main Bio */}
-          <div className="space-y-8 text-xl md:text-2xl text-foreground/80 leading-relaxed font-light">
-            <p className="text-3xl md:text-4xl leading-relaxed">
+          <div className="lg:col-span-7 space-y-8 font-sans text-lg md:text-xl text-foreground/70 leading-relaxed font-light">
+            <p className="text-2xl md:text-3xl leading-relaxed text-foreground/80 font-light">
               Fashion professional currently pursuing a Bachelor of Arts in Business and Technologies 
               of Fashion at New York City College of Technology, with an expected graduation in June 2025.
             </p>
@@ -46,13 +43,15 @@ const About = () => {
           </div>
 
           {/* Skills Grid */}
-          <div>
-            <h3 className="text-4xl md:text-5xl font-light mb-12 tracking-tight">Skills & Expertise</h3>
-            <div className="grid grid-cols-2 gap-6">
+          <div className="lg:col-span-5">
+            <h3 className="font-sans text-xs uppercase tracking-[0.3em] text-muted-foreground mb-8">
+              Skills & Expertise
+            </h3>
+            <div className="space-y-4">
               {skills.map((skill, i) => (
                 <div 
                   key={i}
-                  className="text-lg text-muted-foreground hover:text-coral transition-colors duration-300 cursor-default py-2 border-b border-border/30"
+                  className="font-sans text-base text-foreground/60 hover:text-foreground transition-colors duration-500 cursor-default pb-4 border-b border-border/50"
                 >
                   {skill}
                 </div>
@@ -62,22 +61,24 @@ const About = () => {
         </div>
 
         {/* Education Section */}
-        <div className="pt-20 border-t border-border">
-          <h3 className="text-5xl md:text-6xl font-light mb-12 tracking-tight">Education</h3>
-          <div className="grid md:grid-cols-2 gap-12">
-            <div>
-              <div className="text-3xl md:text-4xl font-light mb-4">
+        <div className="pt-24 border-t border-border">
+          <h3 className="font-sans text-xs uppercase tracking-[0.3em] text-muted-foreground mb-12">
+            Education
+          </h3>
+          <div className="grid md:grid-cols-12 gap-12">
+            <div className="md:col-span-6">
+              <div className="font-serif text-3xl md:text-4xl font-light mb-4 text-foreground">
                 New York City College of Technology
               </div>
-              <div className="text-xl text-muted-foreground mb-2">
+              <div className="font-sans text-lg text-foreground/70 mb-2">
                 Bachelor of Arts in Business and Technologies of Fashion
               </div>
-              <div className="text-lg text-muted-foreground">
+              <div className="font-sans text-sm text-muted-foreground uppercase tracking-wider">
                 April 2020 – June 2025
               </div>
             </div>
-            <div className="text-lg text-foreground/70 leading-relaxed">
-              <span className="text-muted-foreground block mb-2">Key Focus Areas:</span>
+            <div className="md:col-span-6 font-sans text-base text-foreground/60 leading-relaxed font-light">
+              <span className="text-muted-foreground block mb-3 text-xs uppercase tracking-wider">Key Focus Areas:</span>
               Trend Forecasting and Social Media, Merchandising, Global Fashion, 
               E-Commerce Innovation, Advertisement, Financial Forecasting
             </div>
