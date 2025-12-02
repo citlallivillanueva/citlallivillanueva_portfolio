@@ -36,6 +36,7 @@ const experiences = [
 const Experience = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [visibleCards, setVisibleCards] = useState<number[]>([]);
+  const [imageOpacity, setImageOpacity] = useState(1);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -54,6 +55,33 @@ const Experience = () => {
     cards?.forEach(card => observer.observe(card));
 
     return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const images = document.querySelectorAll('.experience-image');
+      images.forEach((img) => {
+        const rect = img.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        const imageCenter = rect.top + rect.height / 2;
+        
+        // Start fading when image center is at 60% of viewport, fully faded at 20%
+        const fadeStart = windowHeight * 0.6;
+        const fadeEnd = windowHeight * 0.15;
+        
+        if (imageCenter <= fadeStart && imageCenter >= fadeEnd) {
+          const opacity = (imageCenter - fadeEnd) / (fadeStart - fadeEnd);
+          (img as HTMLElement).style.opacity = String(Math.max(0, Math.min(1, opacity)));
+        } else if (imageCenter > fadeStart) {
+          (img as HTMLElement).style.opacity = '1';
+        } else {
+          (img as HTMLElement).style.opacity = '0';
+        }
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
@@ -104,11 +132,15 @@ const Experience = () => {
               </div>
               
               {exp.image && (
-                <div className="mt-8 md:mt-12">
+                <div className="mt-16 md:mt-24 flex justify-center">
                   <img 
                     src={exp.image} 
                     alt={`${exp.title} at ${exp.company}`}
-                    className="w-full max-w-2xl h-auto object-cover"
+                    className="experience-image w-full max-w-4xl h-auto object-cover transition-opacity duration-300 ease-out"
+                    style={{ 
+                      aspectRatio: '16/10',
+                      objectPosition: 'center top'
+                    }}
                   />
                 </div>
               )}
