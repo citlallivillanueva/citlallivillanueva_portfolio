@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import stylistAssistantImg from "@/assets/stylist-assistant-1.jpeg";
 
 const experiences = [
   {
@@ -6,7 +7,8 @@ const experiences = [
     company: "Edgard Lopez Davila",
     location: "New York, NY",
     period: "Spring 2025",
-    description: "Supported lead stylists in curating and assembling high-fashion looks for photo shoots, fashion shows, and private clients. Managed garment sourcing and sample coordination with PR agencies and designer showrooms."
+    description: "Supported lead stylists in curating and assembling high-fashion looks for photo shoots, fashion shows, and private clients. Managed garment sourcing and sample coordination with PR agencies and designer showrooms.",
+    image: stylistAssistantImg
   },
   {
     title: "Executive Assistant Intern",
@@ -100,6 +102,16 @@ const Experience = () => {
                   </p>
                 </div>
               </div>
+              
+              {exp.image && (
+                <div className="mt-8 md:mt-12">
+                  <img 
+                    src={exp.image} 
+                    alt={`${exp.title} at ${exp.company}`}
+                    className="w-full max-w-2xl h-auto object-cover"
+                  />
+                </div>
+              )}
             </div>
           ))}
         </div>
